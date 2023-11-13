@@ -33,15 +33,16 @@ describe(`Razor Rename ${testAssetWorkspace.description}`, function () {
             throw new Error('No active document');
         }
 
-        const renameEdit = <vscode.WorkspaceEdit>await vscode.commands.executeCommand(
+        const result = await vscode.commands.executeCommand(
             'vscode.executeDocumentRenameProvider',
             activeDocument,
             {
                 line: 10,
                 character: 17,
-            }
+            },
+            'count'
         );
 
-        expect(renameEdit).toBeDefined();
+        expect(result).toBeDefined();
     });
 });
